@@ -3,19 +3,19 @@
 // ######### ESCREVA O NUMERO DO SEU GRUPO AQUI, CONFORME LINK NA ESPECIFICACAO DO EP
 // ignore os warning to compilador, se houver
 char* grupo() {
-    return("00");
+    return("6");
 }
 
 // ######### ESCREVA O NROUSP DO PRIMEIRO INTEGRANTE AQUI
 // ignore os warning to compilador, se houver
 char* nroUSP1() {
-    return("0000000");
+    return("10723670");
 }
 
 // ######### ESCREVA O NROUSP DO SEGUNDO INTEGRANTE AQUI (OU DEIXE COM ZERO)
 // ignore os warning to compilador, se houver
 char* nroUSP2() {
-    return("0000000");
+    return("10724250");
 }
 
 
