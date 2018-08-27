@@ -18,17 +18,83 @@ char* nroUSP2() {
     return("10724250");
 }
 
+bool inserirResp (NO* resp, char letra, NO* prim, NO* ult){
+    //checkagem de se tem a lista auxiliar
+    if (ult){
+      ult->prox = resp;
+      NO* seg = NULL;
+
+      //libera a alocação de memória da lista auxiliar
+      while (prim){
+        seg = prim->prox;
+        free(prim);
+        prim = seg;
+      }  
+    } 
+
+    NO* novo = (NO*) malloc (sizeof(NO));
+    novo->letra = letra;
+
+    //começa a inserção no resp
+    NO* atual = resp;   
+
+    if (!atual) resp = novo;
+
+    else{
+        while (atual->prox) atual = atual->prox;
+        atual->prox = novo;
+    }
+    novo->prox = NULL
+    return true;
+}
+
+bool ordenar (NO* prim, NO* ult, char letra){
+    NO* novo = (NO*) malloc (sizeof(NO));
+    novo->letra = letra;
+    
+    if (!prim){
+        novo->prox = NULL;
+        prim = novo;
+        ult = prim;
+    }
+    else{
+        novo->prox = prim;
+        prim = novo;
+    }
+    return true;
+
+}
+
 
 
 // o EP consiste em implementar esta funcao
 NO* codificar(NO* frase) {
+    //contador
+    NO* p = frase;
 
+    //lista resposta
     NO* resp = NULL;
 
-    // sua rotina de codificacao aqui (o exemplo cria apenas um elemento X)
-    resp = (NO*) malloc(sizeof(NO));
+    //lista ordenação
+    NO* prim = NULL;
+    NO* ult = prim;
+    // sua rotina de codificacao aqui (o exemplo cria apenas um elemento X)    
+
+    while (p){
+        //se for vogal
+        if ((strcmp(p->letra, "A")==0) || (strcmp(p->letra, "E")==0) || (strcmp(p->letra, "I")==0)|| (strcmp(p->letra, "O")==0)|| (strcmp(p->letra, "U")==0))
+            inserirResp(resp, p->letra, prim, ult);
+
+        //se não o for
+        else
+            ordenar(prim, ult, p->letra);
+        p = p->prox;
+    }
+    /*resp = (NO*) malloc(sizeof(NO));
     resp->letra = 'X';
     resp->prox = NULL;
+    */
+
 
     return resp;
 
